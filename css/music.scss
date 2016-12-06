@@ -1,0 +1,504 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+$d-list:320px,360px,375px,384px,412px,414px,600px;
+$design-size:1080px;
+html{
+    font-size: 112px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body{
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    width: 100%;
+    height: 100%;
+    background: url(../img/bgmusci.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+@each $d in $d-list{
+    @media screen and (min-width: #{$d}){
+        html{
+            font-size: 112px * $d / $design-size;
+        }
+    }
+}
+@mixin top-bottom{
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    margin: auto;
+}
+@mixin left-right{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+@mixin center{
+    @include top-bottom;
+    @include left-right;
+}
+@mixin squ($w,$h){
+    width: $w;
+    height: $h;
+}
+@mixin circle($w,$b){
+    width: $w;
+    height: $w;
+    border-radius: $b;
+}
+audio{
+    display: none;
+}
+.header{
+    height: 1rem;
+    background: #f4f6f5;
+    position: relative;
+    z-index: 5000;
+    .roll{
+        width: 0.8rem;
+        height: 0.2rem;
+        @include center;
+        li{
+          float: left;
+          @include circle(0.2rem,0.2rem);
+          background: #f69fa7;  
+        }
+        .li{
+            width: 0.4rem;
+            background: #f64a58;
+        }
+        li:first-child{
+            margin-right: 0.2rem;
+        }
+    }
+    .name{
+        width: 40px;
+        line-height: 1rem;
+        @include top-bottom;
+        left: 0.25rem;
+        text-align: center;
+        color: #cfd0d2;
+    }
+    .img{
+        border: 1px solid #CFD0D2;
+        @include circle(0.8rem,50%);
+        @include top-bottom;
+        right: 0.2rem;
+        img{
+            width: 80%;
+            display: block;
+            margin: 10% auto;
+        }
+    }
+    .volume{
+        position: absolute;
+        top: 1.2rem;
+        right: 0.2rem;
+        width: 1rem;
+        height: 5rem;
+        display: none;
+        .mute{
+            width: 100%;
+            height: 1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            img{
+                width: 0.6rem;
+                transform: rotate(90deg);
+                @include left-right;
+                top: 0.1rem;
+                display: none;
+            }
+            .one{
+                display: block;
+            }
+        }
+            
+        .length{
+            width: 0.12rem;
+            height: 4rem;
+            @include left-right;
+            bottom: 0;
+            background: #666;
+            .squ{
+                width: 0.6rem;
+                height: 0.2rem;
+                background: #f4f4f4;
+                box-shadow: 0 0 1px #333;
+                position: absolute;
+                left: -(0.6rem-0.12rem)/2;
+                top: 4rem-0.1rem;
+            }
+        }
+    }
+    .show{
+        display: block;
+    }
+}
+.page{
+    transition: all 2s ease-in;
+    position: relative;
+    .name,.singer{
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        left: 0;
+    }
+    .name{
+        color: #fafafa;
+        top: -2rem;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .singer{
+        color: #f4f4f4;
+        font-size: 18px;
+        top: -1rem;
+    }
+    .plays{
+        @include squ(250px,250px);
+        margin: 3rem auto 1rem;
+        position: relative;
+        .play-md{
+            @include circle(85%,50%);
+            @include center;
+            border: 6px solid #fff;
+            box-sizing: border-box;
+            overflow: hidden;
+            z-index: 50;
+            .opa{
+                width: 100%;
+                height: 100%;
+                background: #000;
+                opacity: 0.5;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 10;
+            }
+            .back{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 5;
+            }
+            .play,.pause{
+                width: 25%;
+                height: 25%;
+                @include center;
+                z-index: 20;
+                opacity: 0;
+            }
+            .play{
+                opacity: 1;
+            }
+        }
+        .pro{
+            @include circle(90%,50%);
+            background: transparent;
+            @include center;
+            z-index: 40;
+            box-sizing: border-box;
+            border: 5px solid #E7E7E7;
+            border-bottom-color: #fff;
+        }
+        .progress{
+            @include circle(90%,50%);
+            background: transparent;
+            @include center;
+            z-index: 50;
+            box-sizing: border-box;
+            border: 5px solid transparent;
+            .pc{
+                @include circle(100%,50%);
+                background: transparent;
+                border: 5px solid transparent;
+                position: absolute;
+                top: 0;
+                left: -5px;
+                z-index: 3;
+                span{
+                    @include circle(10px,50%);
+                    background: #9E8856;
+                    position: absolute;
+                    bottom: (225px - 225/2*1.414) /2 - 5px;
+                    left: (225px - 225/2*1.414) /2 - 5px;
+                    z-index: 3;
+                }
+            }
+        }
+        .current,.duration{
+            color: #9d9da5;
+            font-size: 12px;
+            position: absolute;
+            bottom: 20px;
+        }
+        .current{
+            left: 10%;
+        }
+        .duration{
+            right: 10%;
+        }
+    }
+}
+.ric{
+    height: 100%;
+    border-top: 1px dashed #c00;
+    text-align: center;
+    color: #fafafa;
+}
+/*footer*/
+.footer{
+    width: 100%;
+    height: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    .footer-progress{
+        width: 100%;
+        height: 0.1rem;
+        background: #ccc;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 45;
+        .circle{
+            width: 0px;
+            height: 0.1rem;
+            background: #0c0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 50;
+        }
+        .before{
+            @include circle(0.3rem,50%);
+            background: #00c;
+            position: absolute;
+            top: -0.12rem;
+            left: -0.15rem;
+            z-index: 52;
+        }
+    }
+    .page-footer{
+        box-sizing: border-box;
+        margin: 15% 0;
+        li{
+            @include squ(1.2rem,1.2rem);
+            @include top-bottom;
+            img{
+                display: block;
+                width: 50%;
+                @include center;
+            }
+        }
+        li:nth-child(1){
+            left: 1rem;
+        }
+        li:nth-child(2){
+            @include center;
+            img{
+                width: 100%;
+                opacity: 0;
+            }
+            .block{
+                opacity: 1;
+            }
+        }
+        li:nth-child(3){
+            right: 1rem;
+        }
+    }
+}
+/*歌单页*/
+.lists{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background: #fff url(../img/bgmusci.jpg) no-repeat;
+    background-size: 100% 100%;
+    transform-origin: center right;
+    transform: scaleX(0);
+    .div{
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        ul{
+            padding-top: 1rem;
+            li{
+                box-sizing: border-box;
+                margin-left: 0.6rem;
+                border-bottom: 1px solid #e4e4e4;
+                height: 2rem;
+                div{
+                    line-height: 1.2rem;
+                    font-size: 18px;
+                    color: #ddd;
+                    padding-left: 0.25rem;
+                    font-weight: bold;
+                }
+                .singer{
+                    font-size: 14px;
+                    line-height: 0.8rem;
+                    color: #ccc;
+                    font-weight: normal;
+                }
+            }
+            .playnow{
+                .name{
+                    color: #c00;
+                }
+            }
+        }
+    }
+        
+}
+
+
+
+/*js添加类名运行*/
+@keyframes lists{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+}
+@keyframes listsone{
+    from{
+        transform: scaleX(1);
+    }
+    to{
+        transform: scaleX(0);
+    }
+}
+@keyframes page{
+    from{
+        transform: scale(1);
+        opacity: 1;
+    }
+    to{
+        transform: scale(0);
+        opacity: 0; 
+    }
+}
+@keyframes pagetwo{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1; 
+    }
+}
+@keyframes hide{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-400px);
+    }
+}
+@keyframes show{
+    from{
+        transform: translateY(-400px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+@keyframes opa{
+    from{
+        opacity: 0.5;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@keyframes pause{
+    from{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    75%{
+       opacity: 1; 
+    }
+    to{
+       opacity: 0; 
+    }
+}
+@keyframes rotate{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(270deg);
+    }
+}
+@keyframes music{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.page-none{
+    animation: page 1s ease-in-out forwards;
+}
+.pagetwo{
+    animation: pagetwo 1s ease-in-out forwards;
+}
+.ric-hide{
+    animation: hide 1s ease-in-out forwards;
+}
+.rictwo{
+    animation: show 1s ease-in-out forwards;
+}
+.liststwo{
+    animation: lists 1s ease-in-out forwards;
+}
+.listsone{
+    animation: listsone 1s ease-in-out forwards;
+}
+.opacity{
+    animation: opa 1s forwards;
+}
+.pausetwo{
+    animation: pause 4s ;
+}
+.music{
+    animation: music 4s linear infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

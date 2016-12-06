@@ -1,0 +1,647 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  font-size: 112px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-size: 18px;
+  font-family: "microsoft yahei";
+  width: 100%;
+  height: 100%;
+  background: url(../img/bgmusci.jpg) no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 33.18519px;
+  }
+}
+
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 37.33333px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 38.88889px;
+  }
+}
+
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 39.82222px;
+  }
+}
+
+@media screen and (min-width: 412px) {
+  html {
+    font-size: 42.72593px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 42.93333px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 62.22222px;
+  }
+}
+
+audio {
+  display: none;
+}
+
+.header {
+  height: 1rem;
+  background: #f4f6f5;
+  position: relative;
+  z-index: 5000;
+}
+
+.header .roll {
+  width: 0.8rem;
+  height: 0.2rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.header .roll li {
+  float: left;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+  background: #f69fa7;
+}
+
+.header .roll .li {
+  width: 0.4rem;
+  background: #f64a58;
+}
+
+.header .roll li:first-child {
+  margin-right: 0.2rem;
+}
+
+.header .name {
+  width: 40px;
+  line-height: 1rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0.25rem;
+  text-align: center;
+  color: #cfd0d2;
+}
+
+.header .img {
+  border: 1px solid #CFD0D2;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0.2rem;
+}
+
+.header .img img {
+  width: 80%;
+  display: block;
+  margin: 10% auto;
+}
+
+.header .volume {
+  position: absolute;
+  top: 1.2rem;
+  right: 0.2rem;
+  width: 1rem;
+  height: 5rem;
+  display: none;
+}
+
+.header .volume .mute {
+  width: 100%;
+  height: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header .volume .mute img {
+  width: 0.6rem;
+  transform: rotate(90deg);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0.1rem;
+  display: none;
+}
+
+.header .volume .mute .one {
+  display: block;
+}
+
+.header .volume .length {
+  width: 0.12rem;
+  height: 4rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  background: #666;
+}
+
+.header .volume .length .squ {
+  width: 0.6rem;
+  height: 0.2rem;
+  background: #f4f4f4;
+  box-shadow: 0 0 1px #333;
+  position: absolute;
+  left: -0.24rem;
+  top: 3.9rem;
+}
+
+.header .show {
+  display: block;
+}
+
+.page {
+  transition: all 2s ease-in;
+  position: relative;
+}
+
+.page .name, .page .singer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+}
+
+.page .name {
+  color: #fafafa;
+  top: -2rem;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.page .singer {
+  color: #f4f4f4;
+  font-size: 18px;
+  top: -1rem;
+}
+
+.page .plays {
+  width: 250px;
+  height: 250px;
+  margin: 3rem auto 1rem;
+  position: relative;
+}
+
+.page .plays .play-md {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 6px solid #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.page .plays .play-md .opa {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.page .plays .play-md .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.page .plays .play-md .play, .page .plays .play-md .pause {
+  width: 25%;
+  height: 25%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 20;
+  opacity: 0;
+}
+
+.page .plays .play-md .play {
+  opacity: 1;
+}
+
+.page .plays .pro {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 40;
+  box-sizing: border-box;
+  border: 5px solid #E7E7E7;
+  border-bottom-color: #fff;
+}
+
+.page .plays .progress {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 50;
+  box-sizing: border-box;
+  border: 5px solid transparent;
+}
+
+.page .plays .progress .pc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+  border: 5px solid transparent;
+  position: absolute;
+  top: 0;
+  left: -5px;
+  z-index: 3;
+}
+
+.page .plays .progress .pc span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #9E8856;
+  position: absolute;
+  bottom: 27.9625px;
+  left: 27.9625px;
+  z-index: 3;
+}
+
+.page .plays .current, .page .plays .duration {
+  color: #9d9da5;
+  font-size: 12px;
+  position: absolute;
+  bottom: 20px;
+}
+
+.page .plays .current {
+  left: 10%;
+}
+
+.page .plays .duration {
+  right: 10%;
+}
+
+.ric {
+  height: 100%;
+  border-top: 1px dashed #c00;
+  text-align: center;
+  color: #fafafa;
+}
+
+/*footer*/
+.footer {
+  width: 100%;
+  height: 2rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.footer .footer-progress {
+  width: 100%;
+  height: 0.1rem;
+  background: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 45;
+}
+
+.footer .footer-progress .circle {
+  width: 0px;
+  height: 0.1rem;
+  background: #0c0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+}
+
+.footer .footer-progress .before {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: #00c;
+  position: absolute;
+  top: -0.12rem;
+  left: -0.15rem;
+  z-index: 52;
+}
+
+.footer .page-footer {
+  box-sizing: border-box;
+  margin: 15% 0;
+}
+
+.footer .page-footer li {
+  width: 1.2rem;
+  height: 1.2rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.footer .page-footer li img {
+  display: block;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.footer .page-footer li:nth-child(1) {
+  left: 1rem;
+}
+
+.footer .page-footer li:nth-child(2) {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.footer .page-footer li:nth-child(2) img {
+  width: 100%;
+  opacity: 0;
+}
+
+.footer .page-footer li:nth-child(2) .block {
+  opacity: 1;
+}
+
+.footer .page-footer li:nth-child(3) {
+  right: 1rem;
+}
+
+/*歌单页*/
+.lists {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  background: #fff url(../img/bgmusci.jpg) no-repeat;
+  background-size: 100% 100%;
+  transform-origin: center right;
+  transform: scaleX(0);
+}
+
+.lists .div {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.lists .div ul {
+  padding-top: 1rem;
+}
+
+.lists .div ul li {
+  box-sizing: border-box;
+  margin-left: 0.6rem;
+  border-bottom: 1px solid #e4e4e4;
+  height: 2rem;
+}
+
+.lists .div ul li div {
+  line-height: 1.2rem;
+  font-size: 18px;
+  color: #ddd;
+  padding-left: 0.25rem;
+  font-weight: bold;
+}
+
+.lists .div ul li .singer {
+  font-size: 14px;
+  line-height: 0.8rem;
+  color: #ccc;
+  font-weight: normal;
+}
+
+.lists .div ul .playnow .name {
+  color: #c00;
+}
+
+/*js添加类名运行*/
+@keyframes lists {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes listsone {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes page {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pagetwo {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-400px);
+  }
+}
+
+@keyframes show {
+  from {
+    transform: translateY(-400px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes opa {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pause {
+  from {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes music {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.page-none {
+  animation: page 1s ease-in-out forwards;
+}
+
+.pagetwo {
+  animation: pagetwo 1s ease-in-out forwards;
+}
+
+.ric-hide {
+  animation: hide 1s ease-in-out forwards;
+}
+
+.rictwo {
+  animation: show 1s ease-in-out forwards;
+}
+
+.liststwo {
+  animation: lists 1s ease-in-out forwards;
+}
+
+.listsone {
+  animation: listsone 1s ease-in-out forwards;
+}
+
+.opacity {
+  animation: opa 1s forwards;
+}
+
+.pausetwo {
+  animation: pause 4s;
+}
+
+.music {
+  animation: music 4s linear infinite;
+}
